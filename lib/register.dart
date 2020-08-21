@@ -1,7 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:yoga_guru/util/auth.dart';
+import 'package:flutter/services.dart';
+import 'package:guru_sadaka/util/auth.dart';
 
 import 'home.dart';
 
@@ -60,8 +61,11 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black87,
-        title: Text('Register'),
+        backgroundColor: Colors.white,
+        title: Text(
+          'Register',
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
       ),
       body: Container(

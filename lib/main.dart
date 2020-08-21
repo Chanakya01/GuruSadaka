@@ -1,10 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:yoga_guru/home.dart';
-import 'package:yoga_guru/login.dart';
-import 'package:yoga_guru/register.dart';
-import 'package:yoga_guru/util/user.dart';
+import 'package:guru_sadaka/home.dart';
+import 'package:guru_sadaka/login.dart';
+import 'package:guru_sadaka/register.dart';
+import 'package:guru_sadaka/util/user.dart';
 
 List<CameraDescription> cameras;
 
