@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "146941639970",
+    "firebase_url": "https://gurusadaka-5231e.firebaseio.com",
+    "project_id": "gurusadaka-5231e",
+    "storage_bucket": "gurusadaka-5231e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146941639970:android:91cf0fdb9247f75266b97b",
+        "android_client_info": {
+          "package_name": "com.example.csb_gurusadaka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146941639970-nqetopjadb80gcaigq3a8bp6d6h11rhl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDto49ZW7JwILTD0RD5Li0TreMerT2Ud9E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146941639970-nqetopjadb80gcaigq3a8bp6d6h11rhl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
