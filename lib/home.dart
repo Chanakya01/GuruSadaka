@@ -51,7 +51,7 @@ class Home extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: Icon(Icons.exit_to_app),
+            icon: Icon(Icons.exit_to_app, color: Colors.black),
             onPressed: () async {
               Auth auth = Auth();
               await auth.signOut();
@@ -187,7 +187,7 @@ class Home extends StatelessWidget {
         page: Poses(
           cameras: cameras,
           title: title,
-          model: "assets/models/posenet_mv1_075_float_from_checkpoints.tflite",
+          model: "assets/models/yoga_classifier.tflite",
           asanas: asanas,
           color: color,
         ),

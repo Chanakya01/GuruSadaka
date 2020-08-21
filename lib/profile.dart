@@ -337,7 +337,7 @@ class _ProfileState extends State<Profile> {
 
   Future _getImage() async {
     File image = await ImagePicker.pickImage(
-      source: ImageSource.gallery,
+      source: ImageSource.camera,
       maxHeight: 256,
       maxWidth: 256,
     );

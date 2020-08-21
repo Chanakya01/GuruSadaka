@@ -241,7 +241,6 @@ class _RegisterState extends State<Register> {
           _lastNameInputController.text,
         )
             .catchError((err) {
-          print(err);
           showDialog(
             context: context,
             builder: (BuildContext context) {

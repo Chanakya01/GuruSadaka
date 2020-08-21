@@ -60,7 +60,7 @@ class Poses extends StatelessWidget {
         builder: (context) => InferencePage(
           cameras: cameras,
           title: customModelName,
-          model: "assets/models/posenet_mv1_075_float_from_checkpoints.tflite",
+          model: "assets/models/yoga_classifier.tflite",
           customModel: customModelName,
         ),
       ),
