@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:guru_sadaka/describe.dart';
 import 'package:guru_sadaka/inference.dart';
+import 'package:guru_sadaka/util/asana.dart';
 import 'package:guru_sadaka/yoga_card.dart';
 
 class Poses extends StatelessWidget {
   final List<CameraDescription> cameras;
   final String title;
   final String model;
-  final List<String> asanas;
+  final List asanas;
   final Color color;
 
   const Poses({this.cameras, this.title, this.model, this.asanas, this.color});
@@ -37,7 +38,7 @@ class Poses extends StatelessWidget {
               alignment: Alignment.topCenter,
               margin: EdgeInsets.all(10.0),
             ),*/
-            onTap: (index) => _onclick(context, asanas[index], index),
+            onTap: (index) => _onclick(context, asanas[index]["Name"], index),
             itemBuilder: (BuildContext context, int index) {
               return Center(
                 child: Row(
@@ -47,7 +48,7 @@ class Poses extends StatelessWidget {
                       height: 100,
                       width: 300,
                       child: YogaCard(
-                        asana: asanas[index],
+                        asana: asanas[index]["Name"],
                         color: color,
                       ),
                     ),
@@ -76,13 +77,15 @@ class Poses extends StatelessWidget {
   }
 
   void _onclick(BuildContext context, String customModelName, int index) async {
+    AsanaModel asanaModel = new AsanaModel();
+    asanaModel.setAsana(this.asanas[index]);
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => DescribePage(
           cameras: cameras,
           title: customModelName,
-          indexAsana: index,
+          indexAsana: asanaModel,
           customModel: customModelName,
         ),
       ),

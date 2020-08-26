@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:guru_sadaka/home.dart';
 import 'package:guru_sadaka/register.dart';
 import 'package:guru_sadaka/util/auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 class Login extends StatefulWidget {
   final List<CameraDescription> cameras;

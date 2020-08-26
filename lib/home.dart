@@ -81,7 +81,6 @@ class Home extends StatelessWidget {
               onTap: () => _onPoseSelect(
                 context,
                 'Beginner',
-                beginnerAsanas,
                 Colors.green,
               ),
               child: Card(
@@ -114,7 +113,6 @@ class Home extends StatelessWidget {
               onTap: () => _onPoseSelect(
                 context,
                 'Intermediate',
-                intermediateAsanas,
                 Colors.green,
               ),
               child: Card(
@@ -147,7 +145,6 @@ class Home extends StatelessWidget {
               onTap: () => _onPoseSelect(
                 context,
                 'Advanced',
-                advanceAsanas,
                 Colors.green,
               ),
               child: Card(
@@ -160,7 +157,6 @@ class Home extends StatelessWidget {
                       width: 175,
                       fit: BoxFit.cover,
                     ),
-
                     SizedBox(
                       width: 20,
                     ),
@@ -299,12 +295,14 @@ class Home extends StatelessWidget {
     Color color,
   ) async {
     List asanas = new List();
-    var result = await _firestore
+    await _firestore
         .collection("Asanas")
         .where("Type", isEqualTo: title)
-        .getDocuments();
-    result.documents.forEach((res) {
-      asanas.add(res);
+        .getDocuments()
+        .then((querySnapshot) {
+      querySnapshot.documents.forEach((result) {
+        asanas.add(result.data);
+      });
     });
     Navigator.push(
       context,
