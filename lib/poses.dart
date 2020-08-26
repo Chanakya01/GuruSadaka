@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:guru_sadaka/describe.dart';
 import 'package:guru_sadaka/inference.dart';
 import 'package:guru_sadaka/yoga_card.dart';
 
@@ -28,22 +29,29 @@ class Poses extends StatelessWidget {
           child: Swiper(
             itemCount: asanas.length,
             loop: false,
-            viewportFraction: 0.8,
+            viewportFraction: 0.3,
             scale: 0.82,
             outer: true,
-            pagination: SwiperPagination(
-              alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.all(32.0),
-            ),
-            onTap: (index) => _onSelect(context, asanas[index]),
+            scrollDirection: Axis.vertical,
+            /* pagination: SwiperPagination(
+              alignment: Alignment.topCenter,
+              margin: EdgeInsets.all(10.0),
+            ),*/
+            onTap: (index) => _onclick(context, asanas[index], index),
             itemBuilder: (BuildContext context, int index) {
               return Center(
-                child: Container(
-                  height: 360,
-                  child: YogaCard(
-                    asana: asanas[index],
-                    color: color,
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 300,
+                      child: YogaCard(
+                        asana: asanas[index],
+                        color: color,
+                      ),
+                    ),
+                  ],
                 ),
               );
             },
@@ -61,6 +69,20 @@ class Poses extends StatelessWidget {
           cameras: cameras,
           title: customModelName,
           model: "assets/models/yoga_classifier.tflite",
+          customModel: customModelName,
+        ),
+      ),
+    );
+  }
+
+  void _onclick(BuildContext context, String customModelName, int index) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DescribePage(
+          cameras: cameras,
+          title: customModelName,
+          indexAsana: index,
           customModel: customModelName,
         ),
       ),
