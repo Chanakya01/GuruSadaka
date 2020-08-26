@@ -26,13 +26,6 @@ class YogaCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              "assets/poses/" + asana + ".png",
-              fit: BoxFit.contain,
-            ),
-          ),
           Text(
             asana,
             style: TextStyle(fontSize: 24),
@@ -42,3 +35,12 @@ class YogaCard extends StatelessWidget {
     );
   }
 }
+
+/*Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: 
+            Image.asset(
+              "assets/poses/" + asana + ".png",
+              fit: BoxFit.contain,
+            ),
+          ),*/
