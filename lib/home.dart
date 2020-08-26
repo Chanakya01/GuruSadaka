@@ -8,6 +8,7 @@ import 'package:guru_sadaka/size_route.dart';
 import 'package:guru_sadaka/util/pose_data.dart';
 import 'package:guru_sadaka/util/auth.dart';
 import 'package:guru_sadaka/util/user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Home extends StatelessWidget {
   final String email;
@@ -15,7 +16,7 @@ class Home extends StatelessWidget {
   final String displayName;
   final String photoUrl;
   final List<CameraDescription> cameras;
-
+  static final Firestore _firestore = Firestore.instance;
   const Home({
     this.email,
     this.uid,
@@ -106,7 +107,6 @@ class Home extends StatelessWidget {
                     onPressed: () => _onPoseSelect(
                       context,
                       'Beginner',
-                      beginnerAsanas,
                       Colors.green,
                     ),
                   ),
@@ -134,7 +134,6 @@ class Home extends StatelessWidget {
                     onPressed: () => _onPoseSelect(
                       context,
                       'Intermediate',
-                      intermediateAsanas,
                       Colors.blue,
                     ),
                   ),
@@ -162,7 +161,6 @@ class Home extends StatelessWidget {
                     onPressed: () => _onPoseSelect(
                       context,
                       'Advance',
-                      advanceAsanas,
                       Colors.deepPurple[400],
                     ),
                   ),
@@ -178,9 +176,16 @@ class Home extends StatelessWidget {
   void _onPoseSelect(
     BuildContext context,
     String title,
-    List<String> asanas,
     Color color,
   ) async {
+    List asanas = new List();
+    var result = await _firestore
+        .collection("Asanas")
+        .where("Type", isEqualTo: title)
+        .getDocuments();
+    result.documents.forEach((res) {
+      asanas.add(res);
+    });
     Navigator.push(
       context,
       ScaleRoute(
