@@ -1,10 +1,10 @@
 import 'package:camera/camera.dart';
-import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+// import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:guru_sadaka/util/asana.dart';
-import 'package:guru_sadaka/util/pose_description.dart';
+// import 'package:guru_sadaka/util/pose_description.dart';
 import 'dart:async';
 
 class DescribePage extends StatefulWidget {
@@ -31,18 +31,59 @@ class _DescribePageState extends State<DescribePage> {
   _DescribePageState(
       this.cameras, this.title, this.customModel, this.indexAsana);
 
+  Timer _timer;
+  int _start = 10;
+
+  void startTimer() {
+    const oneSec = const Duration(seconds: 1);
+    _timer = new Timer.periodic(
+      oneSec,
+      (Timer timer) => setState(
+        () {
+          if (_start < 1) {
+            timer.cancel();
+          } else {
+            _start = _start - 1;
+          }
+        },
+      ),
+    );
+  }
+
+  void resetTimer() {
+    flutterTts.stop();
+    const oneSec = const Duration(seconds: 1);
+    _timer = new Timer.periodic(
+      oneSec,
+      (Timer timer) => setState(
+        () {
+          if (_start < 10) {
+            _start = 10;
+            timer.cancel();
+          }
+        },
+      ),
+    );
+  }
+
   final FlutterTts flutterTts = FlutterTts();
   @override
+  void dispose() {
+    resetTimer();
+    _timer.cancel();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     Future _speak() async {
-      await flutterTts.pause();
-      await flutterTts.setLanguage('en-US');
-      await flutterTts.setPitch(1.0);
+      await flutterTts.setLanguage('en-IN');
+      await flutterTts.setPitch(1);
+      await flutterTts.setSpeechRate(0.75);
       await flutterTts.speak(indexAsana.doc);
     }
 
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.yellow[50],
         centerTitle: true,
@@ -51,7 +92,8 @@ class _DescribePageState extends State<DescribePage> {
       body: ListView(
         children: [
           Card(
-            //color: Colors.yellow[50],
+            color: Colors.pink[50],
+            elevation: 20,
             margin: EdgeInsets.all(20),
             child: Column(
               children: [
@@ -90,22 +132,88 @@ class _DescribePageState extends State<DescribePage> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 40,
+                ),
                 Row(
                   children: [
-                    clock(),
-                    Column(
-                      children: [
-                        RaisedButton.icon(
-                            onPressed: () => _speak(),
-                            icon: Icon(Icons.speaker),
-                            label: null),
-                        RaisedButton.icon(
-                            onPressed: () => clock(),
-                            icon: Icon(Icons.refresh),
-                            label: null)
-                      ],
+                    SizedBox(
+                      width: 40,
+                    ),
+                    Container(
+                      width: 60,
+                      color: Colors.white,
+                      alignment: Alignment.center,
+                      child: Text(
+                        "$_start",
+                        style: GoogleFonts.getFont('Open Sans',
+                            fontSize: 40, color: Colors.black),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    RaisedButton.icon(
+                      onPressed: () => startTimer(),
+                      icon: Icon(Icons.speaker),
+                      label: Text('Start'),
+                      color: Colors.lightBlueAccent,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    RaisedButton.icon(
+                      onPressed: () => resetTimer(),
+                      icon: Icon(Icons.refresh),
+                      label: Text('Reset'),
+                      color: Colors.lightBlueAccent,
                     ),
                   ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Card(
+                  //elevation: 10,
+                  color: Colors.white,
+                  margin: EdgeInsets.all(5),
+                  child: Text(
+                    'Analytics on pose',
+                    style: GoogleFonts.openSans(
+                      textStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 40,
+                    ),
+                    RaisedButton.icon(
+                      onPressed: () => _speak(),
+                      icon: Icon(Icons.speaker),
+                      label: Text('Speak'),
+                      color: Colors.lime,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    RaisedButton.icon(
+                      onPressed: () => _speak(),
+                      icon: Icon(Icons.assessment),
+                      label: Text('Compare Pose'),
+                      color: Colors.lime,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 30,
                 )
               ],
             ),
@@ -114,9 +222,10 @@ class _DescribePageState extends State<DescribePage> {
       ),
     );
   }
+}
 
-  Widget clock() {
-    return CircularCountDownTimer(
+/*
+CircularCountDownTimer(
       duration: indexAsana.time,
       width: MediaQuery.of(context).size.width / 5,
       height: MediaQuery.of(context).size.height / 5,
@@ -125,14 +234,13 @@ class _DescribePageState extends State<DescribePage> {
       strokeWidth: 5.0,
       textStyle: TextStyle(
           fontSize: 22.0, color: Colors.black87, fontWeight: FontWeight.bold),
-      isReverse: true,
+      isReverse: false,
       isTimerTextShown: true,
       onComplete: () {
         // Here, do whatever you want
       },
-    );
-  }
-}
+    )
+*/
 
 /*
 class DescribePage extends StatelessWidget {
