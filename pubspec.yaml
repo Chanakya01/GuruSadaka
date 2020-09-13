@@ -58,6 +58,8 @@ flutter:
   assets:
     - assets/images/yoga1.png
     - assets/images/profile-image.png
+    - assets/images/favourite.png
+    - assets/images/tutor.png
     - assets/models/posenet_mv1_075_float_from_checkpoints.tflite
     - assets/models/yoga_classifier.tflite
     - assets/poses/

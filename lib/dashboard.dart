@@ -246,4 +246,193 @@ class _BottomBarViewState extends State<BottomBarView>
 }
 
 
+
+// @override
+// Widget build(BuildContext context) {
+
+//   return Scaffold(
+//     backgroundColor: Colors.pink[50],
+//     appBar: AppBar(
+//       backgroundColor: Colors.white,
+//       title: Text('Guru Sadaka', style: TextStyle(color: Colors.black)),
+//       centerTitle: true,
+//       actions: <Widget>[
+//         // GestureDetector(
+//         //   onTap: () => Navigator.push(
+//         //     context,
+//         //     MaterialPageRoute(
+//         //       builder: (context) => Profile(
+//         //         email: user.email,
+//         //         uid: user.uid,
+//         //         displayName: user.displayName,
+//         //         photoUrl: user.photoUrl,
+//         //       ),
+//         //     ),
+//         //   ),
+//         //   child: CircleProfileImage(
+//         //     user: user,
+//         //   ),
+//         // ),
+//         IconButton(
+//           icon: Icon(Icons.exit_to_app, color: Colors.black),
+//           onPressed: () async {
+//             Auth auth = Auth();
+//             await auth.signOut();
+//             Navigator.pushReplacement(
+//               context,
+//               MaterialPageRoute(
+//                 builder: (context) => Login(
+//                   cameras: cameras,
+//                 ),
+//               ),
+//             );
+//           },
+//         ),
+//       ],
+//     ),
+//     body: ListView(
+//       children: [
+//         Container(
+//           padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+//           height: 220,
+//           width: double.maxFinite,
+//           child: GestureDetector(
+//             onTap: () => _onPoseSelect(
+//               context,
+//               'Beginner',
+//               Colors.green,
+//             ),
+//             child: Card(
+//               elevation: 5,
+//               //color: Gradient(colors: null),
+//               child: Row(
+//                 children: [
+//                   Image(
+//                     image: AssetImage('assets/poses/Bhujangasana.png'),
+//                     width: 175,
+//                     fit: BoxFit.cover,
+//                   ),
+//                   SizedBox(
+//                     width: 20,
+//                   ),
+//                   Text(
+//                     'Beginner',
+//                     style: TextStyle(color: Colors.pink, fontSize: 20),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//         Container(
+//           padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+//           height: 220,
+//           width: double.maxFinite,
+//           child: GestureDetector(
+//             onTap: () => _onPoseSelect(
+//               context,
+//               'Intermediate',
+//               Colors.green,
+//             ),
+//             child: Card(
+//               elevation: 5,
+//               //color: Gradient(colors: null),
+//               child: Row(
+//                 children: [
+//                   Image(
+//                     image: AssetImage('assets/poses/Padhastasana.png'),
+//                     width: 175,
+//                     fit: BoxFit.cover,
+//                   ),
+//                   SizedBox(
+//                     width: 20,
+//                   ),
+//                   Text(
+//                     'Intermediate',
+//                     style: TextStyle(color: Colors.pink, fontSize: 20),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//         Container(
+//           padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+//           height: 220,
+//           width: double.maxFinite,
+//           child: GestureDetector(
+//             onTap: () => _onPoseSelect(
+//               context,
+//               'Advanced',
+//               Colors.green,
+//             ),
+//             child: Card(
+//               elevation: 5,
+//               //color: Gradient(colors: null),
+//               child: Row(
+//                 children: [
+//                   Image(
+//                     image: AssetImage('assets/poses/Bakasana.png'),
+//                     width: 175,
+//                     fit: BoxFit.cover,
+//                   ),
+//                   SizedBox(
+//                     width: 20,
+//                   ),
+//                   Text(
+//                     'Advanced',
+//                     style: TextStyle(color: Colors.pink, fontSize: 20),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ],
+//     ),
+//    ,
+//   );
+// }
+
+// List<Widget> generateList(BuildContext context) {
+//   List<Widget> list = [];
+//   int count = 0;
+//   levels.forEach((e) {
+//     Widget element = Container(
+//       margin: EdgeInsets.only(right: 20.0),
+//       child: GestureDetector(
+//         child: Card(
+//           elevation: 5,
+//           //color: Gradient(colors: null),
+//           child: Row(
+//             children: [
+//               Image(
+//                 image: AssetImage('assets/poses/Bhujangasana.png'),
+//                 width: 175,
+//                 fit: BoxFit.cover,
+//               ),
+//               SizedBox(
+//                 width: 20,
+//               ),
+//               Text(
+//                 e,
+//                 style: TextStyle(color: Colors.pink, fontSize: 20),
+//               ),
+//             ],
+//           ),
+//         ),
+//         onTap: () => _onPoseSelect(
+//           context,
+//           'Beginner',
+//           Colors.green,
+//         ),
+//       ),
+//     );
+//     list.add(element);
+//     count++;
+//   });
+//   return list;
+// }
+
+
 */
