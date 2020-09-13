@@ -38,6 +38,7 @@ dependencies:
   google_fonts: ^1.1.0
   flutter_tts: ^1.2.6
   sticky_headers: "^0.1.8"
+  flutter_icons: ^1.1.0
 
 dev_dependencies:
   flutter_test:
