@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:guru_sadaka/util/asana.dart';
@@ -95,14 +96,16 @@ class _DescribePageState extends State<DescribePage> {
                     clock(),
                     Column(
                       children: [
-                        RaisedButton.icon(
-                            onPressed: () => _speak(),
-                            icon: Icon(Icons.speaker),
-                            label: null),
-                        RaisedButton.icon(
-                            onPressed: () => clock(),
-                            icon: Icon(Icons.refresh),
-                            label: null)
+                        IconButton(
+                            icon: Icon(AntDesign.stepforward),
+                            tooltip: 'help',
+                            onPressed: () {
+                              _speak();
+                            })
+                        // RaisedButton.icon(
+                        //     onPressed: () => clock(),
+                        //     icon: Icon(Icons.refresh),
+                        //     label: Text("sds"))
                       ],
                     ),
                   ],
@@ -148,7 +151,7 @@ class DescribePage extends StatelessWidget {
     this.customModel,
     this.indexAsana,
   }) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
