@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:guru_sadaka/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:guru_sadaka/home.dart';
 import 'package:guru_sadaka/login.dart';

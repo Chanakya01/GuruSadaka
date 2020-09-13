@@ -154,21 +154,33 @@ class _DescribePageState extends State<DescribePage> {
                     SizedBox(
                       width: 10,
                     ),
-                    RaisedButton.icon(
-                      onPressed: () => startTimer(),
-                      icon: Icon(Icons.speaker),
-                      label: Text('Start'),
-                      color: Colors.lightBlueAccent,
+                    IconButton(
+                      icon: Icon(Ionicons.md_alarm),
+                      onPressed: () {
+                        startTimer();
+                      },
                     ),
+                    // RaisedButton.icon(
+                    //   onPressed: () => startTimer(),
+                    //   icon: Icon(Icons.speaker),
+                    //   label: Text('Start'),
+                    //   color: Colors.lightBlueAccent,
+                    // ),
                     SizedBox(
                       width: 5,
                     ),
-                    RaisedButton.icon(
-                      onPressed: () => resetTimer(),
-                      icon: Icon(Icons.refresh),
-                      label: Text('Reset'),
-                      color: Colors.lightBlueAccent,
+                    IconButton(
+                      icon: Icon(MaterialCommunityIcons.restart),
+                      onPressed: () {
+                        resetTimer();
+                      },
                     ),
+                    // RaisedButton.icon(
+                    //   onPressed: () => resetTimer(),
+                    //   icon: Icon(Icons.refresh),
+                    //   label: Text('Reset'),
+                    //   color: Colors.lightBlueAccent,
+                    // ),
                   ],
                 ),
                 SizedBox(
@@ -196,11 +208,17 @@ class _DescribePageState extends State<DescribePage> {
                     SizedBox(
                       width: 40,
                     ),
-                    RaisedButton.icon(
-                      onPressed: () => _speak(),
-                      icon: Icon(Icons.speaker),
-                      label: Text('Speak'),
-                      color: Colors.lime,
+                    // RaisedButton.icon(
+                    //   onPressed: () => _speak(),
+                    //   icon: Icon(Icons.speaker),
+                    //   label: Text('Speak'),
+                    //   color: Colors.lime,
+                    // ),
+                    IconButton(
+                      icon: Icon(MaterialCommunityIcons.text_to_speech),
+                      onPressed: () {
+                        _speak();
+                      },
                     ),
                     SizedBox(
                       width: 20,

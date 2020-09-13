@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:guru_sadaka/asanaList.dart';
 import 'package:guru_sadaka/login.dart';
 import 'package:guru_sadaka/poses.dart';
@@ -31,6 +32,40 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User user = User();
+    tapFunction(index) {
+      var routePages = [
+        '/',
+        '/dashboard',
+        '/profile',
+      ];
+      switch (routePages[index]) {
+        case '/':
+          {
+            Navigator.of(context).pushNamed('/');
+          }
+          break;
+        case '/dashboard':
+          {
+            Navigator.of(context).pushNamed('/');
+          }
+          break;
+        case '/profile':
+          {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Profile(
+                    email: user.email,
+                    uid: user.uid,
+                    displayName: user.displayName,
+                    photoUrl: user.photoUrl,
+                  ),
+                ));
+          }
+          break;
+      }
+    }
+
     return Scaffold(
       backgroundColor: Colors.pink[50],
       appBar: AppBar(
@@ -38,22 +73,22 @@ class Home extends StatelessWidget {
         title: Text('Guru Sadaka', style: TextStyle(color: Colors.black)),
         centerTitle: true,
         actions: <Widget>[
-          GestureDetector(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Profile(
-                  email: user.email,
-                  uid: user.uid,
-                  displayName: user.displayName,
-                  photoUrl: user.photoUrl,
-                ),
-              ),
-            ),
-            child: CircleProfileImage(
-              user: user,
-            ),
-          ),
+          // GestureDetector(
+          //   onTap: () => Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (context) => Profile(
+          //         email: user.email,
+          //         uid: user.uid,
+          //         displayName: user.displayName,
+          //         photoUrl: user.photoUrl,
+          //       ),
+          //     ),
+          //   ),
+          //   child: CircleProfileImage(
+          //     user: user,
+          //   ),
+          // ),
           IconButton(
             icon: Icon(Icons.exit_to_app, color: Colors.black),
             onPressed: () async {
@@ -171,121 +206,24 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      // Center(
-      //   child: SingleChildScrollView(
-      //     child: Column(
-      //       mainAxisAlignment: MainAxisAlignment.center,
-      //       children: <Widget>[
-      //         // Welcome Text
-      //         Padding(
-      //           padding: const EdgeInsets.all(32.0),
-      //           child: Text(
-      //             'Welcome\n${user.displayName}',
-      //             textAlign: TextAlign.center,
-      //             style: TextStyle(
-      //               fontSize: 26,
-      //               color: Colors.black87,
-      //             ),
-      //           ),
-      //         ),
-
-      //         // Beginner Button
-      //         Padding(
-      //           padding: const EdgeInsets.all(32.0),
-      //           child: Card(
-      //             elevation: 10,
-      //             child: Column(
-      //               children: [
-      //                 Image(
-      //                   image: AssetImage('assets/poses/Bakasana.png'),
-      //                 ),
-      //                 ButtonTheme(
-      //                   minWidth: 200,
-      //                   height: 60,
-      //                   shape: RoundedRectangleBorder(
-      //                     borderRadius: BorderRadius.circular(30),
-      //                   ),
-      //                   child: FlatButton(
-      //                     color: Colors.green,
-      //                     child: Text(
-      //                       'Beginner',
-      //                       style: TextStyle(
-      //                         fontSize: 20,
-      //                         color: Colors.white,
-      //                       ),
-      //                     ),
-      //                     onPressed: () => _onPoseSelect(
-      //                       context,
-      //                       'Beginner',
-      //                       beginnerAsanas,
-      //                       Colors.green,
-      //                     ),
-      //                   ),
-      //                 ),
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-
-      //         // Intermediate Button
-      //         Padding(
-      //           padding: const EdgeInsets.all(32.0),
-      //           child: ButtonTheme(
-      //             minWidth: 200,
-      //             height: 60,
-      //             shape: RoundedRectangleBorder(
-      //               borderRadius: BorderRadius.circular(30),
-      //             ),
-      //             child: FlatButton(
-      //               color: Colors.blue,
-      //               child: Text(
-      //                 'Intermediate',
-      //                 style: TextStyle(
-      //                   fontSize: 20,
-      //                   color: Colors.white,
-      //                 ),
-      //               ),
-      //               onPressed: () => _onPoseSelect(
-      //                 context,
-      //                 'Intermediate',
-      //                 intermediateAsanas,
-      //                 Colors.blue,
-      //               ),
-      //             ),
-      //           ),
-      //         ),
-
-      //         // Advance Button
-      //         Padding(
-      //           padding: const EdgeInsets.all(32.0),
-      //           child: ButtonTheme(
-      //             minWidth: 200,
-      //             height: 60,
-      //             shape: RoundedRectangleBorder(
-      //               borderRadius: BorderRadius.circular(30),
-      //             ),
-      //             child: FlatButton(
-      //               color: Colors.deepPurple,
-      //               child: Text(
-      //                 'Advance',
-      //                 style: TextStyle(
-      //                   fontSize: 20,
-      //                   color: Colors.white,
-      //                 ),
-      //               ),
-      //               onPressed: () => _onPoseSelect(
-      //                 context,
-      //                 'Advance',
-      //                 advanceAsanas,
-      //                 Colors.deepPurple[400],
-      //               ),
-      //             ),
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) => tapFunction(value),
+        items: [
+          BottomNavigationBarItem(
+            title: Text('Home'),
+            icon: Icon(FontAwesome.home),
+          ),
+          BottomNavigationBarItem(
+            title: Text('Dashboard'),
+            icon: Icon(FontAwesome.dashboard),
+          ),
+          BottomNavigationBarItem(
+            title: Text('Account'),
+            icon: Icon(FontAwesome.user),
+          ),
+        ],
+        backgroundColor: Colors.white,
+      ),
     );
   }
 
