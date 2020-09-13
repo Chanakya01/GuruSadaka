@@ -1,10 +1,9 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:guru_sadaka/describe.dart';
 import 'package:guru_sadaka/inference.dart';
 import 'package:guru_sadaka/util/asana.dart';
-import 'package:guru_sadaka/yoga_card.dart';
 
 class Poses extends StatelessWidget {
   final List<CameraDescription> cameras;
@@ -12,53 +11,52 @@ class Poses extends StatelessWidget {
   final String model;
   final List asanas;
   final Color color;
-
   const Poses({this.cameras, this.title, this.model, this.asanas, this.color});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.yellow[50],
         centerTitle: true,
         title: Text(title, style: TextStyle(color: Colors.black)),
       ),
-      body: Center(
-        child: Container(
-          height: 500,
-          child: Swiper(
-            itemCount: asanas.length,
-            loop: false,
-            viewportFraction: 0.3,
-            scale: 0.82,
-            outer: true,
-            scrollDirection: Axis.vertical,
-            /* pagination: SwiperPagination(
-              alignment: Alignment.topCenter,
-              margin: EdgeInsets.all(10.0),
-            ),*/
-            onTap: (index) => _onclick(context, asanas[index]["Name"], index),
-            itemBuilder: (BuildContext context, int index) {
-              return Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 100,
-                      width: 300,
-                      child: YogaCard(
-                        asana: asanas[index]["Name"],
-                        color: color,
+      body: ListView.builder(
+          itemCount: asanas.length,
+          scrollDirection: Axis.vertical,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              height: 75,
+              child: Card(
+                child: RaisedButton(
+                  color: Colors.white,
+                  onPressed: () =>
+                      _onclick(context, asanas[index]["Name"], index),
+                  child: Row(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundImage: asanas[index]['PicUrl'] == null
+                            ? AssetImage(
+                                'assets/images/profile-image.png',
+                              )
+                            : NetworkImage(asanas[index]['PicUrl']),
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        asanas[index]["Name"],
+                        style: GoogleFonts.getFont('Open Sans'),
+                      )
+                    ],
+                  ),
                 ),
-              );
-            },
-          ),
-        ),
-      ),
+              ),
+            );
+          }),
     );
   }
 
