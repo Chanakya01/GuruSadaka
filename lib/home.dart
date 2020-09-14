@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
   final String uid;
   final String displayName;
   final String photoUrl;
-  static List<Object> levels;
+  static List<LevelModel> levels = [];
   final List<CameraDescription> cameras;
 
   static final Firestore _firestore = Firestore.instance;
@@ -171,18 +171,18 @@ class Home extends StatelessWidget {
 
   List<Widget> generateList(BuildContext context) {
     List<Widget> list = [];
-    levels[0] = new LevelModel(
+    levels.add(new LevelModel(
         title: 'Beginner',
         difficult: 'low',
-        image: 'assets/images/favourite.png');
-    levels[1] = new LevelModel(
+        image: 'assets/images/favourite.png'));
+    levels.add(new LevelModel(
         title: 'Intermediate',
         difficult: 'medium',
-        image: 'assets/images/favourite.png');
-    levels[2] = new LevelModel(
+        image: 'assets/images/favourite.png'));
+    levels.add(new LevelModel(
         title: 'Expert',
         difficult: 'hard',
-        image: 'assets/images/favourite.png');
+        image: 'assets/images/favourite.png'));
     int count = 0;
     levels.forEach((level) {
       Widget element = Container(
