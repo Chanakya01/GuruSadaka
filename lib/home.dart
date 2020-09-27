@@ -5,6 +5,7 @@ import 'package:guru_sadaka/asanaList.dart';
 import 'package:guru_sadaka/login.dart';
 import 'package:guru_sadaka/poses.dart';
 import 'package:guru_sadaka/profile.dart';
+import 'package:guru_sadaka/raids.dart';
 import 'package:guru_sadaka/scale_route.dart';
 import 'package:guru_sadaka/size_route.dart';
 import 'package:guru_sadaka/util/Header.dart';
@@ -39,6 +40,38 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User user = User();
+    navigateSlides(index) {
+      var workouts = ['/pank', '/tops'];
+      switch (workouts[index]) {
+        case '/plank':
+          {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ActivityDetail(
+                          email: user.email,
+                          uid: user.uid,
+                          displayName: user.displayName,
+                          photoUrl: user.photoUrl,
+                        )));
+          }
+          break;
+        case '/tops':
+          {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ActivityDetail(
+                          email: user.email,
+                          uid: user.uid,
+                          displayName: user.displayName,
+                          photoUrl: user.photoUrl,
+                        )));
+          }
+          break;
+      }
+    }
+
     tapFunction(index) {
       var routePages = [
         '/',
@@ -70,6 +103,10 @@ class Home extends StatelessWidget {
                 ));
           }
           break;
+        // case '/workout':
+        //  Navigator.push(context,
+        //    MaterialPageRoute(builder: (context) => ActivityDetail()));
+        // break;
       }
     }
 
@@ -93,57 +130,38 @@ class Home extends StatelessWidget {
                   Section(
                     title: 'Your Schedule',
                     horizontalList: <Widget>[
-                      ImageCardWithInternal(
-                        image: 'assets/images/favourite.png',
-                        title: 'Favourite \nWorkout',
-                        duration: '10 min',
+                      FlatButton(
+                        onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ActivityDetail(
+                                    email: user.email,
+                                    uid: user.uid,
+                                    displayName: user.displayName,
+                                    photoUrl: user.photoUrl))),
+                        child: ImageCardWithInternal(
+                          image: 'assets/images/favourite.png',
+                          title: 'Favourite \nWorkout',
+                          duration: '10 min',
+                        ),
                       ),
-                      ImageCardWithInternal(
-                        image: 'assets/images/tutor.png',
-                        title: 'Tutorial \nWorkout',
-                        duration: '12 min',
+                      FlatButton(
+                        onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ActivityDetail(
+                                    email: user.email,
+                                    uid: user.uid,
+                                    displayName: user.displayName,
+                                    photoUrl: user.photoUrl))),
+                        child: ImageCardWithInternal(
+                          image: 'assets/images/tutor.png',
+                          title: 'Tutorial \nWorkout',
+                          duration: '12 min',
+                        ),
                       ),
                     ],
                   ),
-                  //  Container(
-                  //   margin: EdgeInsets.only(top: 50.0),
-                  //   padding: EdgeInsets.only(top: 10.0, bottom: 40.0),
-                  //   decoration: BoxDecoration(
-                  //     color: Colors.blue[50],
-                  //   ),
-                  //   child: Column(
-                  //     children: <Widget>[
-                  //       Section(
-                  //         title: 'Daily Tips',
-                  //         horizontalList: <Widget>[
-                  //           UserTip(
-                  //             image: 'assets/images/image010.jpg',
-                  //             name: 'User Img',
-                  //           ),
-                  //           UserTip(
-                  //             image: 'assets/images/image010.jpg',
-                  //             name: 'User Img',
-                  //           ),
-                  //           UserTip(
-                  //             image: 'assets/images/image010.jpg',
-                  //             name: 'User Img',
-                  //           ),
-                  //           UserTip(
-                  //             image: 'assets/images/image010.jpg',
-                  //             name: 'User Img',
-                  //           ),
-                  //         ],
-                  //       ),
-                  //       Section(
-                  //         horizontalList: <Widget>[
-                  //           DailyTip(),
-                  //           DailyTip(),
-                  //           DailyTip(),
-                  //         ],
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                 ],
               ),
             ),
@@ -267,3 +285,43 @@ class _CircleProfileImageState extends State<CircleProfileImage> {
     );
   }
 }
+
+//  Container(
+//   margin: EdgeInsets.only(top: 50.0),
+//   padding: EdgeInsets.only(top: 10.0, bottom: 40.0),
+//   decoration: BoxDecoration(
+//     color: Colors.blue[50],
+//   ),
+//   child: Column(
+//     children: <Widget>[
+//       Section(
+//         title: 'Daily Tips',
+//         horizontalList: <Widget>[
+//           UserTip(
+//             image: 'assets/images/image010.jpg',
+//             name: 'User Img',
+//           ),
+//           UserTip(
+//             image: 'assets/images/image010.jpg',
+//             name: 'User Img',
+//           ),
+//           UserTip(
+//             image: 'assets/images/image010.jpg',
+//             name: 'User Img',
+//           ),
+//           UserTip(
+//             image: 'assets/images/image010.jpg',
+//             name: 'User Img',
+//           ),
+//         ],
+//       ),
+//       Section(
+//         horizontalList: <Widget>[
+//           DailyTip(),
+//           DailyTip(),
+//           DailyTip(),
+//         ],
+//       ),
+//     ],
+//   ),
+// ),
