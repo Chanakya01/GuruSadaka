@@ -162,16 +162,6 @@ class ActivityDetail extends StatelessWidget {
                               title: 'Plank',
                               duration: '50',
                             ),
-                            // NextStep(
-                            //   image: 'assets/images/image006.jpg',
-                            //   title: 'Push-ups',
-                            //   seconds: 50,
-                            // ),
-                            // NextStep(
-                            //   image: 'assets/images/image007.jpg',
-                            //   title: 'Lateral Raise',
-                            //   seconds: 50,
-                            // ),
                           ],
                         ),
                       ),

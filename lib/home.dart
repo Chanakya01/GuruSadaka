@@ -141,7 +141,7 @@ class Home extends StatelessWidget {
                                     photoUrl: user.photoUrl))),
                         child: ImageCardWithInternal(
                           image: 'assets/images/favourite.png',
-                          title: 'Favourite \nWorkout',
+                          title: 'Create own \nWorkout',
                           duration: '10 min',
                         ),
                       ),
@@ -156,8 +156,23 @@ class Home extends StatelessWidget {
                                     photoUrl: user.photoUrl))),
                         child: ImageCardWithInternal(
                           image: 'assets/images/tutor.png',
-                          title: 'Tutorial \nWorkout',
+                          title: 'Your \nWorkout',
                           duration: '12 min',
+                        ),
+                      ),
+                      FlatButton(
+                        onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ActivityDetail(
+                                    email: user.email,
+                                    uid: user.uid,
+                                    displayName: user.displayName,
+                                    photoUrl: user.photoUrl))),
+                        child: ImageCardWithInternal(
+                          image: 'assets/images/tutorial.jpg',
+                          title: 'Tutorial \nConnect',
+                          duration: '2 hr',
                         ),
                       ),
                     ],
@@ -285,43 +300,3 @@ class _CircleProfileImageState extends State<CircleProfileImage> {
     );
   }
 }
-
-//  Container(
-//   margin: EdgeInsets.only(top: 50.0),
-//   padding: EdgeInsets.only(top: 10.0, bottom: 40.0),
-//   decoration: BoxDecoration(
-//     color: Colors.blue[50],
-//   ),
-//   child: Column(
-//     children: <Widget>[
-//       Section(
-//         title: 'Daily Tips',
-//         horizontalList: <Widget>[
-//           UserTip(
-//             image: 'assets/images/image010.jpg',
-//             name: 'User Img',
-//           ),
-//           UserTip(
-//             image: 'assets/images/image010.jpg',
-//             name: 'User Img',
-//           ),
-//           UserTip(
-//             image: 'assets/images/image010.jpg',
-//             name: 'User Img',
-//           ),
-//           UserTip(
-//             image: 'assets/images/image010.jpg',
-//             name: 'User Img',
-//           ),
-//         ],
-//       ),
-//       Section(
-//         horizontalList: <Widget>[
-//           DailyTip(),
-//           DailyTip(),
-//           DailyTip(),
-//         ],
-//       ),
-//     ],
-//   ),
-// ),
