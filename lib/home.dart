@@ -204,6 +204,7 @@ class Home extends StatelessWidget {
 
   List<Widget> generateList(BuildContext context) {
     List<Widget> list = [];
+    List<LevelModel> levels = [];
     levels.add(new LevelModel(
         title: 'Beginner',
         difficult: 'low',

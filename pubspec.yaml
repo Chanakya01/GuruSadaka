@@ -39,6 +39,7 @@ dependencies:
   flutter_tts: ^1.2.6
   sticky_headers: "^0.1.8"
   flutter_icons: ^1.1.0
+  favorite_button: ^0.0.3
 
 dev_dependencies:
   flutter_test:
