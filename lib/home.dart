@@ -1,20 +1,15 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:guru_sadaka/asanaList.dart';
-import 'package:guru_sadaka/login.dart';
 import 'package:guru_sadaka/poses.dart';
 import 'package:guru_sadaka/profile.dart';
 import 'package:guru_sadaka/raids.dart';
 import 'package:guru_sadaka/scale_route.dart';
-import 'package:guru_sadaka/size_route.dart';
 import 'package:guru_sadaka/util/Header.dart';
 import 'package:guru_sadaka/util/Image_card2.dart';
 import 'package:guru_sadaka/util/Image_card_1.dart';
 import 'package:guru_sadaka/util/LevelModel.dart';
 import 'package:guru_sadaka/util/Section.dart';
-import 'package:guru_sadaka/util/pose_data.dart';
-import 'package:guru_sadaka/util/auth.dart';
 import 'package:guru_sadaka/util/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 

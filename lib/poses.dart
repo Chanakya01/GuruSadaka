@@ -8,14 +8,21 @@ import 'package:guru_sadaka/inference.dart';
 import 'package:guru_sadaka/util/Section.dart';
 import 'package:guru_sadaka/util/asana.dart';
 
-class Poses extends StatelessWidget {
+class Poses extends StatefulWidget {
   final List<CameraDescription> cameras;
   final String title;
   final String model;
   final List asanas;
-  List filteredAsanas;
   final Color color;
   Poses({this.cameras, this.title, this.model, this.asanas, this.color});
+
+  @override
+  _PosesState createState() => _PosesState();
+}
+
+class _PosesState extends State<Poses> {
+  List filteredAsanas;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +31,7 @@ class Poses extends StatelessWidget {
         backgroundColor: Colors.white,
         centerTitle: false,
         title: Text(
-          title,
+          widget.title,
           style: TextStyle(
             fontSize: 24,
             color: Colors.grey[600],
@@ -52,9 +59,9 @@ class Poses extends StatelessWidget {
   }
 
   onItemChanged(String value) {
-    filteredAsanas = asanas;
+    filteredAsanas = widget.asanas;
     if (value != "") {
-      filteredAsanas = asanas
+      filteredAsanas = widget.asanas
           .where((c) => c["Name"].toLowerCase().contains(value.toLowerCase()))
           .toList();
     }
@@ -74,24 +81,25 @@ class Poses extends StatelessWidget {
             child: RaisedButton(
               elevation: 20,
               color: Colors.white,
-              onPressed: () => _onclick(context, asanas[index]["Name"], index),
+              onPressed: () =>
+                  _onclick(context, widget.asanas[index]["Name"], index),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(
                     radius: 25,
-                    backgroundImage: asanas[index]['PicUrl'] == null
+                    backgroundImage: widget.asanas[index]['PicUrl'] == null
                         ? AssetImage(
                             'assets/images/profile-image.png',
                           )
-                        : NetworkImage(asanas[index]['PicUrl']),
+                        : NetworkImage(widget.asanas[index]['PicUrl']),
                   ),
                   SizedBox(
                     width: 20,
                   ),
                   Text(
-                    asanas[index]["Name"],
+                    widget.asanas[index]["Name"],
                     style: GoogleFonts.getFont(
                       'Lato',
                       textStyle:
@@ -114,34 +122,18 @@ class Poses extends StatelessWidget {
           ),
         );
       },
-      itemCount: asanas.length,
-      // pagination: new SwiperPagination(),
-      // control: new SwiperControl(),
-    );
-  }
-
-  void _onSelect(BuildContext context, String customModelName) async {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => InferencePage(
-          cameras: cameras,
-          title: customModelName,
-          model: "assets/models/yoga_classifier.tflite",
-          customModel: customModelName,
-        ),
-      ),
+      itemCount: widget.asanas.length,
     );
   }
 
   void _onclick(BuildContext context, String customModelName, int index) async {
     AsanaModel asanaModel = new AsanaModel();
-    asanaModel.setAsana(this.asanas[index]);
+    asanaModel.setAsana(this.widget.asanas[index]);
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => DescribePage(
-          cameras: cameras,
+          cameras: widget.cameras,
           title: customModelName,
           indexAsana: asanaModel,
           customModel: customModelName,
